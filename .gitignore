@@ -13,3 +13,4 @@ report/*.log
 report/*.aux
 report/*.out
 report/report_build.tex
+report/report.pdf

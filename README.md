@@ -111,12 +111,12 @@ Patch-equivalence tests:
 .venv/Scripts/python.exe -m pytest -q tests
 ```
 
-Collect all results into `results/RESULTS.md` and the report tables, then build the report (pdfLaTeX twice, or
-tectonic):
+Collect all results into `results/RESULTS.md` and the report tables, re-render the evidence figures from the logs
+and compile the report to `report/Phase1_Baseline_Report_Nicholas_Taylor.pdf` (needs `tectonic` on the PATH or
+passed with `--tectonic`; alternatively run `make_results.py` and compile `report/report.tex` with pdfLaTeX):
 
 ```bash
-.venv/Scripts/python.exe scripts/make_results.py
-cd report && tectonic report.tex
+.venv/Scripts/python.exe scripts/build_report.py
 ```
 
 ## Layout
