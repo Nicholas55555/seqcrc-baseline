@@ -1,5 +1,7 @@
 # SeqCRC baseline reproduction (Phase 1, Weather Adaptive Autonomous Driving)
 
+Authors: Nicholas Taylor and Zander Picon (CAI 6930 Autonomous Vehicles, Florida Gulf Coast University).
+
 This repository reproduces the baseline our course project builds on:
 
 > L. Andéol, L. Mossina, A. Mazoyer, S. Gerchinovitz. **Conformal Object Detection by Sequential
