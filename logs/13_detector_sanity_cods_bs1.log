@@ -1,0 +1,21 @@
+Loading and preparing results...
+DONE (t=1.80s)
+creating index...
+index created!
+--- cods YOLOv8x wrapper (input to SeqCRC): COCO bbox evaluation on 5000 images ---
+(t=47.97s).
+Accumulating evaluation results...
+DONE (t=8.64s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.451
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.659
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.482
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.254
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.500
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.641
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.344
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.540
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.568
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.371
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.626
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.741
+{"AP": 0.4513, "AP50": 0.6589, "AP75": 0.4823, "AP_small": 0.2539, "AP_medium": 0.4996, "AP_large": 0.6412, "AR1": 0.344, "AR10": 0.5404, "AR100": 0.5683, "AR_s": 0.3714, "AR_m": 0.6264, "AR_l": 0.741, "n_images": 5000, "boxes": 246583, "boxes_per_image_mean": 50.5}

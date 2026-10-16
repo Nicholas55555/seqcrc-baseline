@@ -1,0 +1,79 @@
+2026-10-15 18:47:22,493 INFO seqcrc_repro: Environment: {"python": "3.11.15", "platform": "Windows-10-10.0.26200-SP0", "torch": "2.14.1+cu126", "torchvision": "0.29.1+cu126", "ultralytics": "8.4.177", "numpy": "2.4.6", "cuda": "12.6", "device": "cuda", "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU", "gpu_mem_gb": 4.0}
+2026-10-15 18:47:32,623 INFO seqcrc_repro: COCO val2017: 5000 images; calibration 300, test 300
+Predictions already exist, loading them...
+Predictions already exist, loading them...
+2026-10-15 18:48:05,035 INFO seqcrc_repro: Predictions ready in 15.6 s; test boxes/image after floor: mean 53.8, median 28, max 394
+2026-10-15 18:48:05,591 INFO seqcrc_repro: Running ('hausdorff', 'box_count_recall', 'pixelwise', 'aps', 'additive') at alpha_tot=0.1
+[2026-10-15 18:48:05:WARNING:cp.py:cp:754 - __init__ ] No multiple_testing_correction provided, assuming no correction is needed. The explicit list of alphas is expected for calibration.
+C:\Users\nicho\Downloads\phase 1+2\phase 1\seqcrc-baseline\external\cods\cods\od\utils.py:493: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\utils\tensor_new.cpp:255.)
+  Qst = torch.FloatTensor([np.array(Qs)]).to(device)
+--------------------------------------------------
+Lambdas
+	previous_lbd = 0.9250815063714981
+	Last Lambda = 0.9249740391969681
+	Other previous lbd = 0.9250815063714981
+	Other current lbd = 0.9249740391969681
+All risks raw (precomputed):
+	Confidence Risk: 0.01964365690946579
+	Localization Risk: 0.003322259057313204
+	Classification Risk: 0.003322259057313204
+	Max Risk: 0.01964365690946579
+All risks monotonized (precomputed):
+	Confidence Risk: 0.01964365690946579
+	Localization Risk: 0.003322259057313204
+	Classification Risk: 0.003322259057313204
+	Max Risk: 0.01964365690946579
+Confidence risk (recomputed):
+	Confidence Risk: 0.01637580431997776
+Comparison of the two :
+	 (isclose) 0.996666669845581
+	 (eq) 0.996666669845581
+	Image 129 loss: tensor([0.1111]) (eval) vs tensor([0.2222]) (opti)
+	Image 129 confidence: tensor([0.9362, 0.6545, 0.3152, 0.2911, 0.1884, 0.1767, 0.0856, 0.0749, 0.0626, 0.0510, 0.0448, 0.0364, 0.0219, 0.0203, 0.0194, 0.0188, 0.0159, 0.0129, 0.0114, 0.0109, 0.0108, 0.0106, 0.0089, 0.0085, 0.0083, 0.0079, 0.0077, 0.0070, 0.0059, 0.0054, 0.0040, 0.0035, 0.0031, 0.0029, 0.0029, 0.0028, 0.0025, 0.0024, 0.0024,
+        0.0023, 0.0022, 0.0021, 0.0019, 0.0019, 0.0019, 0.0017, 0.0016, 0.0016, 0.0014, 0.0013, 0.0013, 0.0012, 0.0011, 0.0011])
+	Image 129 number of ground truths: 9
+	Image 129 number of predictions: 8
+--------------------------------------------------
+--------------------------------------------------
+Lambdas
+	previous_lbd = 0.9160988479852676
+	Last Lambda = 0.9160321801900864
+	Other previous lbd = 0.9160988479852676
+	Other current lbd = 0.9160321801900864
+All risks raw (precomputed):
+	Confidence Risk: 0.019638769328594208
+	Localization Risk: 0.0
+	Classification Risk: 0.0
+	Max Risk: 0.019638769328594208
+All risks monotonized (precomputed):
+	Confidence Risk: 0.019638769328594208
+	Localization Risk: 0.0
+	Classification Risk: 0.0
+	Max Risk: 0.019638769328594208
+Confidence risk (recomputed):
+	Confidence Risk: 0.01970423385500908
+Comparison of the two :
+	 (isclose) 0.996666669845581
+	 (eq) 0.996666669845581
+	Image 71 loss: tensor([0.]) (eval) vs tensor([0.1250]) (opti)
+	Image 71 confidence: tensor([0.9451, 0.9307, 0.7966, 0.7513, 0.5228, 0.4816, 0.3362, 0.0839, 0.0826, 0.0751, 0.0734, 0.0562, 0.0455, 0.0231, 0.0183, 0.0078, 0.0060, 0.0057, 0.0052, 0.0050, 0.0050, 0.0038, 0.0038, 0.0028, 0.0025, 0.0023, 0.0021, 0.0020, 0.0017, 0.0017, 0.0017, 0.0014, 0.0013, 0.0013, 0.0011, 0.0010])
+	Image 71 number of ground truths: 8
+	Image 71 number of predictions: 8
+--------------------------------------------------
+[2026-10-15 18:56:34:WARNING:cp.py:cp:556 - calibrate ] Currently considering that there is only one matching prediction to each true box for classification pruposes. To add later how to aggregate if multiple preidctions matched.
+Confidence threshold is 0.07491849362850189
+Matching is : True
+Matching complete
+Confidence threshold: 0.07491849362850189
+ODParameters
+global_alpha: 0.12000000000000001
+alpha_confidence: 0.02
+alpha_localization: 0.05
+alpha_classification: 0.05
+lambda_confidence_plus: 0.9250815063714981
+lambda_confidence_minus: 0.9160988479852676
+lambda_localization: 7.2021484375
+lambda_classification: 0.5339964032173157
+confidence_threshold: 0.07491849362850189
+2026-10-15 19:19:55,416 INFO seqcrc_repro: RESULT cnf 0.0248/11.113 | loc 0.0399/1.301 | cls 0.0329/42.669 | global 0.0661 | thr 0.0749 | 1908s
+2026-10-15 19:19:55,420 INFO seqcrc_repro: Results appended to results\subset300_F1.jsonl

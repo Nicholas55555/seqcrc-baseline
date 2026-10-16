@@ -1,0 +1,12 @@
+ann_done 0
+val_done 0
+total 1043456
+drwxr-xr-x 1 nicho 197609         0 Oct 15 17:28 .
+drwxr-xr-x 1 nicho 197609         0 Oct 15 17:28 ..
+-rw-r--r-- 1 nicho 197609 252907541 Oct 15 17:28 annotations_trainval2017.zip
+-rw-r--r-- 1 nicho 197609 815585330 Oct 15 17:28 val2017.zip
+
+# checksum verification, Thu Oct 15 20:17:34 EDT 2026
+annotations_trainval2017.zip: OK
+val2017.zip: OK
+3df4ada6b4dad6d657868f2fdf7faecfb34dcfccf3a25c4b82079064718524c8 *weights/yolov8x.pt

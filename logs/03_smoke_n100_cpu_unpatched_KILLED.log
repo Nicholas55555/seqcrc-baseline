@@ -1,0 +1,57 @@
+Predictions already exist, loading them...
+Predictions already exist, loading them...
+[2026-10-15 17:47:55:WARNING:cp.py:cp:754 - __init__ ] No multiple_testing_correction provided, assuming no correction is needed. The explicit list of alphas is expected for calibration.
+C:\Users\nicho\Downloads\phase 1+2\phase 1\seqcrc-baseline\external\cods\cods\od\utils.py:493: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\utils\tensor_new.cpp:255.)
+  Qst = torch.FloatTensor([np.array(Qs)]).to(device)
+--------------------------------------------------
+Lambdas
+	previous_lbd = 0.9362505450844765
+	Last Lambda = 0.9361369833350182
+	Other previous lbd = 0.9362505450844765
+	Other current lbd = 0.9361369833350182
+All risks raw (precomputed):
+	Confidence Risk: 0.019607843831181526
+	Localization Risk: 0.019607843831181526
+	Classification Risk: 0.019607843831181526
+	Max Risk: 0.019607843831181526
+All risks monotonized (precomputed):
+	Confidence Risk: 0.019607843831181526
+	Localization Risk: 0.019607843831181526
+	Classification Risk: 0.019607843831181526
+	Max Risk: 0.019607843831181526
+Confidence risk (recomputed):
+	Confidence Risk: 0.0
+Comparison of the two :
+	 (isclose) 0.9800000190734863
+	 (eq) 0.9800000190734863
+	Image 23 loss: tensor([0.]) (eval) vs tensor([0.1429]) (opti)
+	Image 23 confidence: tensor([0.9215, 0.8843, 0.8793, 0.7662, 0.6117, 0.6055, 0.0637, 0.0569, 0.0296, 0.0221, 0.0145, 0.0067, 0.0056, 0.0051, 0.0023, 0.0020, 0.0018, 0.0014, 0.0014, 0.0013, 0.0013, 0.0013, 0.0011, 0.0010])
+	Image 23 number of ground truths: 7
+	Image 23 number of predictions: 7
+--------------------------------------------------
+--------------------------------------------------
+Lambdas
+	previous_lbd = 0.8608536422252655
+	Last Lambda = 0.8604731410741806
+	Other previous lbd = 0.8608536422252655
+	Other current lbd = 0.8604731410741806
+All risks raw (precomputed):
+	Confidence Risk: 0.019051210954785347
+	Localization Risk: 0.0
+	Classification Risk: 0.0
+	Max Risk: 0.019051210954785347
+All risks monotonized (precomputed):
+	Confidence Risk: 0.019051210954785347
+	Localization Risk: 0.0
+	Classification Risk: 0.0
+	Max Risk: 0.019051210954785347
+Confidence risk (recomputed):
+	Confidence Risk: 0.01943223550915718
+Comparison of the two :
+	 (isclose) 0.9800000190734863
+	 (eq) 0.9800000190734863
+	Image 9 loss: tensor([0.]) (eval) vs tensor([0.5000]) (opti)
+	Image 9 confidence: tensor([0.7635, 0.1391, 0.1018, 0.0423, 0.0065, 0.0044, 0.0028, 0.0015])
+	Image 9 number of ground truths: 2
+	Image 9 number of predictions: 2
+--------------------------------------------------

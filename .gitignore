@@ -1,0 +1,15 @@
+# large or rebuildable artefacts: never committed (see README "Data, weights and caches")
+data/
+weights/
+cache/
+.venv/
+external/cods/
+__pycache__/
+*.pyc
+.pytest_cache/
+# LaTeX build by-products (scoped to report/ so that logs/*.log stay committed)
+report/_test.*
+report/*.log
+report/*.aux
+report/*.out
+report/report_build.tex

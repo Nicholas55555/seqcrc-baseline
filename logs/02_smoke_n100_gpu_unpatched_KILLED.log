@@ -1,0 +1,3 @@
+[2026-10-15 17:36:07:WARNING:cp.py:cp:754 - __init__ ] No multiple_testing_correction provided, assuming no correction is needed. The explicit list of alphas is expected for calibration.
+  Qst = torch.FloatTensor([np.array(Qs)]).to(device)
+[2026-10-15 17:46:05:WARNING:cp.py:cp:556 - calibrate ] Currently considering that there is only one matching prediction to each true box for classification pruposes. To add later how to aggregate if multiple preidctions matched.

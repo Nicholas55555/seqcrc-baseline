@@ -1,0 +1,31 @@
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\caption{SeqCRC with YOLOv8x on COCO val2017, $\alpha_{\text{tot}}=0.1$: set size and test risk per task (confidence:
+boxes per image, budget 0.02; localization: box stretch, 0.05; classification: classes per set, 0.05) and global risk
+(budget 0.1). Paper: App.\ Table VII. Full: the same 2{,}500/2{,}500 split. 300/300: first 300 calibration, next 300 test.}
+\label{tab:seqcrc}
+\begin{tabular}{@{}l p{3.3cm} l rr rr rr r@{}}
+\toprule
+ & Matching / conf.\ loss / loc.\ loss-set / class set & Source & \multicolumn{2}{c}{Confidence} & \multicolumn{2}{c}{Localization} & \multicolumn{2}{c}{Classification} & Global \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+ & & & size & risk & size & risk & size & risk & risk \\
+\midrule
+@@SEQCRC_ROWS@@
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Detector check: COCO box AP of YOLOv8x on all 5{,}000 val2017 images (pycocotools).}
+\label{tab:det}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Boxes scored & AP & AP50 & AP75 \\
+\midrule
+@@DET_ROWS@@
+\bottomrule
+\end{tabular}
+\end{table}
+

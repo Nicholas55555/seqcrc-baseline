@@ -1,0 +1,90 @@
+uv 0.12.2 (46ead6098 2026-08-05 x86_64-pc-windows-msvc)
+Using CPython 3.11.15 interpreter at: C:\Users\nicho\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\python.exe
+Creating virtual environment at: .venv
+Activate with: .venv\Scripts\activate
+Resolved 13 packages in 694ms
+Installed 13 packages in 28.78s
+ + filelock==3.32.3
+ + fsspec==2026.7.0
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.6.1
+ + numpy==2.4.6
+ + pillow==12.3.0
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.14.1+cu126
+ + torchvision==0.29.1+cu126
+ + typing-extensions==4.16.0
+Resolved 64 packages in 1.21s
+   Building cods @ file:///C:/Users/nicho/Downloads/phase%201+2/phase%201/seqcrc-baseline/external/cods
+Downloading fonttools (1.6MiB)
+Downloading ultralytics (1.4MiB)
+ Downloaded fonttools
+ Downloaded ultralytics
+      Built cods @ file:///C:/Users/nicho/Downloads/phase%201+2/phase%201/seqcrc-baseline/external/cods
+Prepared 5 packages in 9.29s
+Installed 51 packages in 8.16s
+ + anyio==4.15.1
+ + certifi==2026.7.22
+ + charset-normalizer==3.5.2
+ + click==8.5.0
+ + cloudpickle==3.1.2
+ + cods==0.4 (from file:///C:/Users/nicho/Downloads/phase%201+2/phase%201/seqcrc-baseline/external/cods)
+ + colorama==0.4.6
+ + contourpy==1.3.3
+ + cycler==0.12.1
+ + fonttools==4.67.0
+ + glob2==0.7
+ + h11==0.16.0
+ + hf-xet==1.7.0
+ + httpcore==1.0.9
+ + httpcore2==2.13.1
+ + httpx==0.28.1
+ + httpx2==2.13.1
+ + huggingface-hub==2.2.0
+ + idna==3.20
+ + joblib==1.6.0
+ + kiwisolver==1.5.1
+ + llvmlite==0.50.0
+ + matplotlib==3.11.2
+ + narwhals==2.27.1
+ + numba==0.68.0
+ + nvidia-ml-py==13.615.71
+ + opencv-python==5.0.0.93
+ + packaging==26.3
+ + polars==2.0.0
+ + polars-runtime-32==2.0.0
+ + psutil==7.2.2
+ + pyaml==26.7.0
+ + pycocotools==2.0.11
+ + pyparsing==3.3.3
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.2.4
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + safetensors==0.8.0
+ + scikit-learn==1.9.1
+ + scikit-optimize==0.10.2
+ + scipy==1.17.1
+ + six==1.17.0
+ + threadpoolctl==3.7.0
+ + timm==1.0.30
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + ultralytics==8.4.177
+ + ultralytics-platform==0.1.88
+ + ultralytics-thop==2.2.2
+ + urllib3==2.8.0
+Resolved 12 packages in 333ms
+Prepared 1 package in 112ms
+Installed 6 packages in 4.64s
+ + iniconfig==2.3.1
+ + pandas==3.0.6
+ + pluggy==1.7.0
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + tzdata==2026.5
+torch 2.14.1+cu126 cuda True 12.6 NVIDIA GeForce RTX 3050 Ti Laptop GPU
+tv 0.29.1+cu126 ultra 8.4.177 np 2.4.6

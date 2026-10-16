@@ -1,0 +1,132 @@
+diff --git a/cods/od/optim.py b/cods/od/optim.py
+index 1ad0a51..e3fe82b 100644
+--- a/cods/od/optim.py
++++ b/cods/od/optim.py
+@@ -13,6 +13,37 @@ from cods.od.utils import apply_margins, match_predictions_to_true_boxes
+ logger = getLogger("cods")
+ 
+ 
++class _RunningSumList(list):
++    """List of per-image loss tensors that keeps their sum up to date in O(1) per update.
++
++    Reproduction patch (seqcrc-baseline/patches/cods-reproduction.patch, fix (b)): the optimizers recompute
++    sum(stack(losses)) over all n calibration images after every single-image update, which is
++    O(n) per candidate threshold and O(n^2) overall. The sum is kept in float64 here.
++    """
++
++    def __init__(self, *args):
++        super().__init__(*args)
++        self.total = float(sum(float(x) for x in self))
++
++    def append(self, x):
++        super().append(x)
++        self.total += float(x)
++
++    def __setitem__(self, i, x):
++        self.total += float(x) - float(self[i])
++        super().__setitem__(i, x)
++
++    def copy(self):
++        return _RunningSumList(self)
++
++
++def _fast_correct_risk(risk, n, B):
++    if isinstance(risk, _RunningSumList):
++        device = risk[0].device if len(risk) > 0 else "cpu"
++        return torch.tensor((risk.total + B) / (n + 1), dtype=torch.float32, device=device)
++    return None
++
++
+ # TODO(leo): only image level currently
+ class FirstStepMonotonizingOptimizer(Optimizer):
+     def __init__(self):
+@@ -37,6 +68,9 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+         - corrected_risk (torch.Tensor): The corrected risk tensor.
+ 
+         """
++        fast = _fast_correct_risk(risk, n, B)
++        if fast is not None:
++            return fast
+         return (torch.sum(torch.stack(risk)) + B) / (n + 1)
+ 
+     def optimize(
+@@ -73,9 +107,9 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+ 
+         lambda_conf = init_lambda
+ 
+-        confidence_losses = []
+-        localization_losses = []
+-        classification_losses = []
++        confidence_losses = _RunningSumList()
++        localization_losses = _RunningSumList()
++        classification_losses = _RunningSumList()
+ 
+         # Step 0: Initialize the risk
+ 
+@@ -99,7 +133,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+             matching_i = predictions.matching[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -245,7 +279,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+             image_shape = image_shapes[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -453,9 +487,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+                     matching_i = predictions.matching[i]
+ 
+                     pred_boxes_i = pred_boxes_i[confidences_i >= 1 - previous_lbd]
+-                    pred_cls_i = [
+-                        x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - previous_lbd
+-                    ]
++                    pred_cls_i = list(pred_cls_i[confidences_i >= 1 - previous_lbd])
+                     confidence_loss_i = confidence_loss(
+                         true_boxes_i,
+                         true_cls_i,
+@@ -562,7 +594,7 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             overload_confidence_threshold=1 - lambda_conf,
+         )
+ 
+-        losses = []
++        losses = _RunningSumList()
+ 
+         # TODO(leo): parallelize?
+         # Step 1: Compute the risk
+@@ -575,7 +607,7 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             matching_i = predictions.matching[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -653,7 +685,7 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             predictions.matching[i] = matching_i
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -701,8 +733,8 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             losses[i] = loss_i
+ 
+             # ------- Start Logging -------
+-            _log_mon_risk = torch.mean(torch.stack(losses))
+-            _log_raw_risk = torch.mean(torch.stack(_log_losses))
++            _log_mon_risk = torch.tensor(losses.total / len(losses))
++            _log_raw_risk = torch.tensor(_log_losses.total / len(_log_losses))
+             all_risks_raw.append(_log_raw_risk.detach().cpu().numpy())
+             all_risks_mon.append(_log_mon_risk.detach().cpu().numpy())
+             all_lbds_cnf.append(lambda_conf)

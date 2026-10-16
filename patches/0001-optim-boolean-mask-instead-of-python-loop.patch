@@ -1,0 +1,51 @@
+diff --git a/cods/od/optim.py b/cods/od/optim.py
+index 1ad0a51..416d6cc 100644
+--- a/cods/od/optim.py
++++ b/cods/od/optim.py
+@@ -99,7 +99,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+             matching_i = predictions.matching[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -245,7 +245,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+             image_shape = image_shapes[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -453,9 +453,7 @@ class FirstStepMonotonizingOptimizer(Optimizer):
+                     matching_i = predictions.matching[i]
+ 
+                     pred_boxes_i = pred_boxes_i[confidences_i >= 1 - previous_lbd]
+-                    pred_cls_i = [
+-                        x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - previous_lbd
+-                    ]
++                    pred_cls_i = list(pred_cls_i[confidences_i >= 1 - previous_lbd])
+                     confidence_loss_i = confidence_loss(
+                         true_boxes_i,
+                         true_cls_i,
+@@ -575,7 +573,7 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             matching_i = predictions.matching[i]
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0
+@@ -653,7 +651,7 @@ class SecondStepMonotonizingOptimizer(Optimizer):
+             predictions.matching[i] = matching_i
+ 
+             pred_boxes_i = pred_boxes_i[confidences_i >= 1 - lambda_conf]
+-            pred_cls_i = [x for x, c in zip(pred_cls_i, confidences_i) if c >= 1 - lambda_conf]
++            pred_cls_i = list(pred_cls_i[confidences_i >= 1 - lambda_conf])
+             pred_cls_i = (
+                 torch.stack(pred_cls_i)
+                 if len(pred_cls_i) > 0

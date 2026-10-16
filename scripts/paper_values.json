@@ -1,0 +1,16 @@
+{
+ "_source": "Andeol et al., arXiv:2505.24038v2, Appendix Table VII 'Experimental Results using the YOLOv8x model for alpha_tot=0.1' (COCO val, 2,500/2,500). Size/Risk per task; Global = mean of max(loc, cls) loss.",
+ "F1": {"config": ["hausdorff", "box_count_recall", "pixelwise", "aps", "additive"],
+        "confidence_size": 11.7104, "confidence_risk": 0.0189, "localization_size": 3.867, "localization_risk": 0.0487,
+        "classification_size": 41.7312, "classification_risk": 0.0428, "global_risk": 0.0824},
+ "F2": {"config": ["lac", "box_count_threshold", "pixelwise", "lac", "additive"],
+        "confidence_size": 18.8552, "confidence_risk": 0.0124, "localization_size": 20.6405, "localization_risk": 0.0467,
+        "classification_size": 0.7168, "classification_risk": 0.0489, "global_risk": 0.086},
+ "F3": {"config": ["mix", "box_count_recall", "pixelwise", "lac", "multiplicative"],
+        "confidence_size": 11.7104, "confidence_risk": 0.0189, "localization_size": 4.5352, "localization_risk": 0.0492,
+        "classification_size": 67.5809, "classification_risk": 0.0531, "global_risk": 0.0976},
+ "F4": {"config": ["mix", "box_count_threshold", "boxwise", "aps", "additive"],
+        "confidence_size": 18.8552, "confidence_risk": 0.0124, "localization_size": 6.1211, "localization_risk": 0.0432,
+        "classification_size": 40.7516, "classification_risk": 0.0418, "global_risk": 0.0781},
+ "detector": {"ultralytics_yolov8x_mAP50_95": 53.9, "_source": "Ultralytics YOLOv8 model table (COCO val2017, 640 px)"}
+}

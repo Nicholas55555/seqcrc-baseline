@@ -1,0 +1,21 @@
+Loading and preparing results...
+DONE (t=1.21s)
+creating index...
+index created!
+--- native Ultralytics YOLOv8x (NMS IoU 0.5, agnostic=True): COCO bbox evaluation on 5000 images ---
+(t=36.65s).
+Accumulating evaluation results...
+DONE (t=6.69s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.516
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.688
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.556
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.334
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.571
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.675
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.379
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.604
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.636
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.464
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.690
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.772
+{"AP": 0.5161, "AP50": 0.6877, "AP75": 0.5562, "AP_small": 0.3339, "AP_medium": 0.5707, "AP_large": 0.675, "AR1": 0.3789, "AR10": 0.6039, "AR100": 0.6362, "AR_s": 0.464, "AR_m": 0.6905, "AR_l": 0.772, "n_images": 5000, "seconds": 2901.7, "boxes": 241605, "nms_iou": 0.5, "agnostic_nms": true}
